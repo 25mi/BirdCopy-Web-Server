@@ -63,7 +63,8 @@ None
 
     https://api.500px.com/v1/photos?feature=popular
 
-**Return** __shortened for example purpose__
+**Return
+** __shortened for example purpose__**
 json
 {
   "feature": "popular",
