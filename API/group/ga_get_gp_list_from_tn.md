@@ -40,7 +40,6 @@
 ## Return format
 服务器端响应(Content-Type:application/json;charset=utf-8):.type=all:
 
-.type=all:
 	{"rc":"操作结果","rm":"反馈信息","allRecordCount":全部记录数,"allPageCount":全部页数,"currentPage":当前页数,"perPageCount":每页记录数,
 		[{
 		"gp_id":"群组id","gp_name":"群组名称","gp_owner":"群组属主","gp_desc":"群组描述","logo":"群组logo图片的url",
