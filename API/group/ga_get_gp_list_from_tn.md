@@ -11,10 +11,6 @@
 * Get
 
 ***
-## Requires authentication
-* No.
-
-***
 
 ## Parameters/optional
 - **type** — 想要获取的数据内容,默认取值all,返回群组列表,其它取值rc,返回符合条件的全部记录数.
