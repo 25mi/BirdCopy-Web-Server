@@ -29,11 +29,8 @@
     - 'sys_time desc' — 为默认值,表示按 录入时间 降序;(升序去掉 desc).
     - 'upd_time desc' — 表示按 更新时间 降序;(升序去掉 desc)
     - 'gp_name' — 表示按 群组名称 升序;(降序加 desc)
-
 - **tuser_key** — 终端用户key.
 - **app_id** — 查询时所在App id.
-
-
 ***
 
 ## Return format
