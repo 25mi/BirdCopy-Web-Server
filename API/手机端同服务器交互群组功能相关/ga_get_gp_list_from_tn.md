@@ -1,4 +1,4 @@
-# Photo Resources
+# Group Resources
 
     获取群组列表
 
