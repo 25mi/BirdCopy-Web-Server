@@ -10,3 +10,5 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+API/手机端同服务器交互群组功能相关/ga_get_gp_list_from_tn.md
