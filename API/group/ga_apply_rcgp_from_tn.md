@@ -44,7 +44,7 @@
 		0:正在审批;
 		1:审批通过;
 		4:审批未通过;
-	注:返回结果同 ［］［（）］的结果一致;
+	注:返回结果同 ［］［（https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_apply_member_from_tn.md）］的结果一致;
 	注:如果系统依赖融云推送审批结果,系统审批后会发送RC:TxtMsg类型系统消息一次,内容同V的结果一致,也可自行获取审批结果.
 ***
 
