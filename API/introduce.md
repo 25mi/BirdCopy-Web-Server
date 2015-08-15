@@ -23,10 +23,9 @@ See [status.500px.com](http://status.500px.com) for API status updates, outages,
 
 ***
 
-## Basics
+## 概要
 
 - **[Formats and Terms](https://github.com/500px/api-documentation/blob/master/basics/formats_and_terms.md)**
-- **[API Terms of Use](https://github.com/500px/api-documentation/blob/master/basics/terms_of_use.md)**
 
 ## Examples
 
