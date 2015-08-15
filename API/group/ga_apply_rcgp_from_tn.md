@@ -23,6 +23,10 @@
 ***
 
 ## Return format
+
+[ApplyMember]: https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_apply_member_from_tn.md
+
+
 服务器端响应(Content-Type:application/json;charset=utf-8):
 
 	{"rc":"操作结果","rm":"反馈信息","info_type":"信息类型","tuser_key":"tuser_key"
@@ -46,8 +50,6 @@
 		4:审批未通过;
 	注:返回结果同[ga_apply_member_from_tn][ApplyMember]的结果一致;
 	注:如果系统依赖融云推送审批结果,系统审批后会发送RC:TxtMsg类型系统消息一次,内容同V的结果一致,也可自行获取审批结果.
-
-[ApplyMember]: https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_apply_member_from_tn.md
 
 ***
 
