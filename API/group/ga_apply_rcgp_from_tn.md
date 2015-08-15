@@ -9,9 +9,9 @@
 
 * Get
 ***
+
 ## Requires authentication
 * No.
-
 ***
 
 ## Parameters/Required
