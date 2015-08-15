@@ -24,10 +24,10 @@
 - **sys_recom** — 系统推荐,1:已推荐 0:未推荐
 - **gp_id**— 群组id.
 - **gp_owner** — 群组属主.
-- **sys_time_start** — 录入起始时间,标准格式:yyyy-mm-dd hh:mi:ss.
-- **sys_time_stop** — 录入终止时间,标准格式:yyyy-mm-dd hh:mi:ss.
-- **upd_time_start** — 最近更新起始时间,标准格式:yyyy-mm-dd hh:mi:ss.
-- **upd_time_stop** — 最近更新终止时间,标准格式:yyyy-mm-dd hh:mi:ss.
+- **sys_time_start** — 录入起始时间,标准格式:yyyy-mm-dd hh:mi:ss
+- **sys_time_stop** — 录入终止时间,标准格式:yyyy-mm-dd hh:mi:ss
+- **upd_time_start** — 最近更新起始时间,标准格式:yyyy-mm-dd hh:mi:ss
+- **upd_time_stop** — 最近更新终止时间,标准格式:yyyy-mm-dd hh:mi:ss
 - **sortindex** — 排序.(返回群组列表的排序）,多重排序可组合,中间以,分隔;
     - 为空时 — 表示按 最近更新时间 降序.
     - 'sys_time desc' — 为默认值,表示按 录入时间 降序;(升序去掉 desc).
