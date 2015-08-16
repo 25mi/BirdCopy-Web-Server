@@ -44,27 +44,16 @@ See [status.500px.com](http://status.500px.com) for API status updates, outages,
 - **[Android](https://github.com/500px/500px-android-sdk)**
 - **[iOS](https://github.com/500px/500px-iOS-api)**
 
-## Endpoints
+## API
 
-#### Photo Resources
+#### 终端上传及交互
 
-- **[<code>GET</code> photos](https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos.md)**
-- **[<code>GET</code> photos/search](https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos_search.md)**
-- **[<code>GET</code> photos/:id](https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos_id.md)**
-- **[<code>GET</code> photos/:id/comments](https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos_id_comments.md)**
-- **[<code>GET</code> photos/:id/favorites](https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos_id_favorites.md)**
-- **[<code>GET</code> photos/:id/votes](https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos_id_votes.md)**
-- **[<code>PUT</code> photos/:id](https://github.com/500px/api-documentation/blob/master/endpoints/photo/PUT_photos_id.md)**
-- **[<code>POST</code> photos](https://github.com/500px/api-documentation/blob/master/endpoints/photo/POST_photos.md)**
-- **[<code>POST</code> photos/upload](https://github.com/500px/api-documentation/blob/master/endpoints/photo/POST_photos_upload.md)**
-- **[<code>POST</code> photos/:id/vote](https://github.com/500px/api-documentation/blob/master/endpoints/photo/POST_photos_id_vote.md)**
-- **[<code>POST</code> photos/:id/tags](https://github.com/500px/api-documentation/blob/master/endpoints/photo/POST_photos_id_tags.md)**
-- **[<code>POST</code> photos/:id/favorite](https://github.com/500px/api-documentation/blob/master/endpoints/photo/POST_photos_id_favorite.md)**
-- **[<code>POST</code> photos/:id/comments](https://github.com/500px/api-documentation/blob/master/endpoints/photo/POST_photos_id_comments.md)**
-- **[<code>POST</code> photos/:id/report](https://github.com/500px/api-documentation/blob/master/endpoints/photo/POST_photos_id_report.md)**
-- **[<code>DELETE</code> photos/:id](https://github.com/500px/api-documentation/blob/master/endpoints/photo/DELETE_photos_id.md)**
-- **[<code>DELETE</code> photos/:id/tags](https://github.com/500px/api-documentation/blob/master/endpoints/photo/DELETE_photos_id_tags.md)**
-- **[<code>DELETE</code> photos/:id/favorite](https://github.com/500px/api-documentation/blob/master/endpoints/photo/DELETE_photos_id_favorite.md)**
+- **[获取群组列表](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_get_gp_list_from_tn.md)**
+- **[获取群组相关信息](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_get_gp_info_from_tn.md)**
+- **[机端将终端用户申请加入群组的相关数据上传到服务器](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_apply_member_from_tn.md)**
+- **[手机端将终端用户申请群组聊天的相关数据上传到服务器](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_apply_rcgp_from_tn.md)**
+- **[获取群组成员的相关信息](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_get_member_info_from_tn.md)**
+- **[获取终端用户所属组列表](ga_get_member_gplist_from_tn.action)**
 
 #### Upload Method
 
