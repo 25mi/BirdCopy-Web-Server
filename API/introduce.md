@@ -38,15 +38,14 @@ See [status.500px.com](http://status.500px.com) for API status updates, outages,
 
 * 2014-03-27 Deprecated photo object's image_url key.
 
-## SDK
+## Application
 
-- **[JavaScript](https://github.com/500px/500px-js-sdk)**
-- **[Android](https://github.com/500px/500px-android-sdk)**
-- **[iOS](https://github.com/500px/500px-iOS-api)**
+- **[Android](https://github.com/birdcopy/Android-Birdcopy-Application)**
+- **[iOS](https://github.com/birdcopy/IOS-BirdCopy-Application)**
 
 ## API
 
-#### 终端上传及交互
+#### 群组终端上传及交互
 
 - **[获取群组列表](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_get_gp_list_from_tn.md)**
 - **[获取群组相关信息](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_get_gp_info_from_tn.md)**
@@ -55,9 +54,11 @@ See [status.500px.com](http://status.500px.com) for API status updates, outages,
 - **[获取群组成员的相关信息](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_get_member_info_from_tn.md)**
 - **[获取终端用户所属组列表](ga_get_member_gplist_from_tn.action)**
 
-#### Upload Method
+#### 支付相关/PING++
 
-- **[<code>POST</codE> upload](https://github.com/500px/api-documentation/blob/master/endpoints/upload/POST_upload.md)**
+- **[获取支付凭据(Charge)](https://github.com/500px/api-documentation/blob/master/endpoints/upload/POST_upload.md)**
+- **[查询支付凭据(Charge)信息](https://github.com/500px/api-documentation/blob/master/endpoints/upload/POST_upload.md)**
+
 
 #### User Resources
 
