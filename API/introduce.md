@@ -56,8 +56,8 @@ See [status.500px.com](http://status.500px.com) for API status updates, outages,
 
 #### 支付相关/PING++
 
-- **[获取支付凭据(Charge)](https://github.com/500px/api-documentation/blob/master/endpoints/upload/POST_upload.md)**
-- **[查询支付凭据(Charge)信息](https://github.com/500px/api-documentation/blob/master/endpoints/upload/POST_upload.md)**
+- **[获取支付凭据(Charge)](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/pay/pa_get_charge_from_tn.md)**
+- **[查询支付凭据(Charge)信息](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/pay/pa_que_charge_from_tn.md)**
 
 
 #### User Resources
