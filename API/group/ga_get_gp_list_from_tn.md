@@ -46,7 +46,7 @@
 	"allPageCount":全部页数,
 	"currentPage":当前页数,
 	"perPageCount":每页记录数,
-		[{
+	"rs":[{
 		"gp_id":"群组id",
 		"gp_name":"群组名称",
 		"gp_owner":"群组属主",
@@ -57,8 +57,7 @@
 		"is_audit_rcgp":"申请加入融云对应群组是否需要审核[1:是 0:否]",
 		"owner_recom":"属主是否已推荐[1:是 0:否 null:空]",
 		"sys_recom":"系统是否已推荐[1:是 0:否 null:空]",
-		},
-		{puser2:...}...]
+		}]
 	}
 	rc取值:	
 	1:已成功
