@@ -18,6 +18,8 @@
 
 ## Parameters/optional
 - **type** — 想要获取的数据内容,默认取值all,返回群组列表,其它取值rc,返回符合条件的全部记录数.
+    - 'all' — 为默认值,返回符合条件群组列表.
+    - 'rc' —  只返回符合条件的记录数。
 - **perPageCount** — 每页记录数,大于0的正整数，默认15.
 - **page** — 第几页,大于0的正整数，默认1.
 - **owner_recom** — 属主推荐,1:已推荐 0:未推荐.
@@ -39,6 +41,8 @@
 
 ## Return format
 服务器端响应(Content-Type:application/json;charset=utf-8):.type=all:
+
+默认返回（type取all）
 
 	{"rc":"操作结果",
 	"rm":"反馈信息",
@@ -63,8 +67,7 @@
 	1:已成功
 	0:未成功,rm返回具体出错信息,rm参数之后的其它参数可能不会返回.
 
-
-       .type=rc:
+type=rc:
 	{"rc":"操作结果","rm":"反馈信息","allRecordCount":全部记录数}
 	rc取值:	
 	1:已成功
