@@ -9,9 +9,6 @@
 ## Requires Type
 
 * Get
-***
-## Requires authentication
-* No.
 
 ***
 
