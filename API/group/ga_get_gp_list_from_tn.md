@@ -87,74 +87,7 @@ None
 
     https://api.500px.com/v1/photos?feature=popular
 
-**Return** __shortened for example purpose__
-``` json
-{
-  "feature": "popular",
-  "filters": {
-      "category": false,
-      "exclude": false
-  },
-  "current_page": 1,
-  "total_pages": 250,
-  "total_items": 5000,
-  "photos": [
-    {
-      "id": 4910421,
-      "name": "Orange or lemon",
-      "description": "",
-      "times_viewed": 709,
-      "rating": 97.4,
-      "created_at": "2012-02-09T02:27:16-05:00",
-      "category": 0,
-      "privacy": false,
-      "width": 472,
-      "height": 709,
-      "votes_count": 88,
-      "favorites_count": 26,
-      "comments_count": 58,
-      "nsfw": false,
-      "image_url": "http://pcdn.500px.net/4910421/c4a10b46e857e33ed2df35749858a7e45690dae7/2.jpg",
-      "user": {
-        "id": 386047,
-        "username": "Lluisdeharo",
-        "firstname": "Lluis ",
-        "lastname": "de Haro Sanchez",
-        "city": "Sabadell",
-        "country": "Catalunya",
-        "fullname": "Lluis de Haro Sanchez",
-        "userpic_url": "http://acdn.500px.net/386047/f76ed05530afec6d1d0bd985b98a91ce0ce49049/1.jpg?0",
-        "upgrade_status": 0
-      }
-    },
-    {
-      "id": 4905955,
-      "name": "R E S I G N E D",
-      "description": "From the past of Tagus River, we have History and memories, some of them abandoned and disclaimed in their margins ...",
-      "times_viewed": 842,
-      "rating": 97.4,
-      "created_at": "2012-02-08T19:00:13-05:00",
-      "category": 0,
-      "privacy": false,
-      "width": 750,
-      "height": 500,
-      "votes_count": 69,
-      "favorites_count": 34,
-      "comments_count": 29,
-      "nsfw": false,
-      "image_url": "http://pcdn.500px.net/4905955/7e1a6be3d8319b3b7357c6390289b20c16a26111/2.jpg",
-      "user": {
-        "id": 350662,
-        "username": "cresendephotography",
-        "firstname": "Carlos",
-        "lastname": "Resende",
-        "city": "Forte da Casa",
-        "country": "Portugal",
-        "fullname": "Carlos Resende",
-        "userpic_url": "http://acdn.500px.net/350662.jpg",
-        "upgrade_status": 0
-      }
-    }
-  ]
-}
+**Return** 
+
+{"rc":"1","rm":"","allRecordCount":"1","allPageCount":"1","currentPage":"1","perPageCount":20,"rs":[{"gp_index":1,"gp_id":"6d08cef1cd33d42bfaa1a12ae2c2f194","gp_name":"看美剧学英语","gp_owner":"n1","gp_des":"那种看着中文字幕的美剧，然后安慰说自己在练听力的都是掩耳盗铃而已   所以有句很出名的话，学英语专业吧，一切娱乐活动，皆以学习之名！","logo":"http://www.birdenglish.com:9999/public/gp/1/logo_1jpeg","is_audit_join":"0","is_rc_gp":"1","is_audit_rcgp":"1","owner_recom":"1","sys_recom":"1"}]}
 
