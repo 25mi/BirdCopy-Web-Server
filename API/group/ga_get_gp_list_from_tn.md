@@ -90,23 +90,26 @@ None
 **Return** 
 	
 	{
-	"rc":"1",
-	"rm":"",
-	"allRecordCount":"1",
-	"allPageCount":"1",
-	"currentPage":"1",
-	"perPageCount":20,
-	"rs":[
-			{"gp_index":1,
-			"gp_id":"6d08cef1cd33d42bfaa1a12ae2c2f194",
-			"gp_name":"看美剧学英语",
-			"gp_owner":"n1",
-			"gp_des":"那种看着中文字幕的美剧，然后安慰说自己在练听力的都是掩耳盗铃而已   所以有句很出名的话，学英语专业吧，一切娱乐活动，皆以学习之名！",
-			"logo":"http://www.birdenglish.com:9999/public/gp/1/logo_1jpeg",
-			"is_audit_join":"0",
-			"is_rc_gp":"1",
-			"is_audit_rcgp":"1",
-			"owner_recom":"1",
-			"sys_recom":"1"}]
+    "rc": "1",
+    "rm": "",
+    "allRecordCount": "1",
+    "allPageCount": "1",
+    "currentPage": "1",
+    "perPageCount": 20,
+    "rs": [
+        {
+            "gp_index": 1,
+            "gp_id": "6d08cef1cd33d42bfaa1a12ae2c2f194",
+            "gp_name": "看美剧学英语",
+            "gp_owner": "n1",
+            "gp_des": "那种看着中文字幕的美剧，然后安慰说自己在练听力的都是掩耳盗铃而已   所以有句很出名的话，学英语专业吧，一切娱乐活动，皆以学习之名！",
+            "logo": "http://www.birdenglish.com:9999/public/gp/1/logo_1jpeg",
+            "is_audit_join": "0",
+            "is_rc_gp": "1",
+            "is_audit_rcgp": "1",
+            "owner_recom": "1",
+            "sys_recom": "1"
+        }
+    	]
 	}
 
