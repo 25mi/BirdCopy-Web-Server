@@ -22,4 +22,8 @@
 - **[查询支付凭据(Charge)信息](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/pay/pa_que_charge_from_tn.md)**
 
 
+#### 一收款相关/PING++
+
+- **[壹收款专用-获取支付凭据(Charge)](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/pay/pa_get_o_charge_from_tn.md)**
+- **[壹收款专用-获取订单号](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/pay/pa_get_on_from_tn.md)**
 
