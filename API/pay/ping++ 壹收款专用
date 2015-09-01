@@ -1,5 +1,5 @@
   V.壹收款专用-获取订单号:
-  a.手机端请求url: 
+       a.手机端请求url: 
 	http://[ServerNetAddress]/pa_get_on_from_tn.action
 	相关参数:
 	   必须参数:
@@ -8,7 +8,7 @@
 		以下Ping++参数:
 		app_id:所在App id;
 
-  b.服务器端响应(Content-Type:application/json;charset=utf-8):
+       b.服务器端响应(Content-Type:application/json;charset=utf-8):
 	{"rc":"操作结果","rm":"反馈信息","order_no":"订单号"}
 	rc取值:	
 	1:已成功
@@ -17,7 +17,7 @@
 
 
   VI.壹收款专用-获取支付凭据(Charge):
-  a.手机端请求url: (post请求:body内容为一个 JSON 对象)
+       a.手机端请求url: (post请求:body内容为一个 JSON 对象)
 	http://[ServerNetAddress]/pa_get_o_charge_from_tn.action
 	数据格式:
 		{
@@ -35,7 +35,8 @@
 			subject:商品的标题，该参数最长为 32 个 Unicode 字符，银联限制在 32 个字节;
 			body:   商品的描述信息，该参数最长为 128 个 Unicode 字符，yeepay_wap 对于该参数长度限制为 100 个 Unicode 字符;
 
-  b.服务器端响应(Content-Type:application/json;charset=utf-8):
+       b.服务器端响应(Content-Type:application/json;charset=utf-8):
 	{Ping++ Charge 对象(见Ping++相关文档)}
 	注:中途出错时,返回格式{"rc":"0","rm":"出错信息"}.
+
 
