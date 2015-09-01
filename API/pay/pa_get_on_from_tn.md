@@ -21,17 +21,11 @@
 服务器端响应(Content-Type:application/json;charset=utf-8)
 
 
-	{"rc":"操作结果",
-	"rm":"反馈信息",
-	"order_no":"订单号",
-	"Charge":{Ping++ Charge 对象(见Ping++相关文档)}}
-	{"rc":"操作结果",
-	"rm":"反馈信息",
-	"order_no":"订单号"}
-	
+	{"rc":"操作结果","rm":"反馈信息","order_no":"订单号"}
 	rc取值:	
 	1:已成功
 	0:未成功,rm返回具体出错信息,rm参数之后的其它参数可能不会返回.
+
 
 ***
 
