@@ -29,7 +29,8 @@
        .type=all:
 	{"rc":"操作结果","rm":"反馈信息","allRecordCount":全部记录数,"allPageCount":全部页数,"currentPage":当前页数,"perPageCount":每页记录数,
 		"rs":[{
-		"gp_id":"群组id","gp_name":"群组名称","gp_owner":"群组属主(目前=作者)","gp_desc":"群组描述","logo":"群组logo图片的url",
+		"gp_id":"群组id","gp_name":"群组名称","gp_owner":"群组属主(目前=作者)","gp_desc":"群组描述",
+		"logo":"群组logo图片的url","cover":"群组cover图片的url",
 		"is_audit_join":"申请加入群组是否需要审核[1:是 0:否]",
 		"is_rc_gp":"是否已开通融云对应群组[1:是 0:否 null:空]",
 		"is_audit_rcgp":"申请加入融云对应群组是否需要审核[1:是 0:否]",
