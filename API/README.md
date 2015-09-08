@@ -11,7 +11,7 @@
 
 - **[获取群组列表](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_get_gp_list_from_tn.md)**
 - **[获取群组相关信息](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_get_gp_info_from_tn.md)**
-- **[机端将终端用户申请加入群组的相关数据上传到服务器](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_apply_member_from_tn.md)**
+- **[手机端将终端用户申请加入群组的相关数据上传到服务器](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_apply_member_from_tn.md)**
 - **[手机端将终端用户申请群组聊天的相关数据上传到服务器](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_apply_rcgp_from_tn.md)**
 - **[获取群组成员的相关信息](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_get_member_info_from_tn.md)**
 - **[获取终端用户所属组列表](https://github.com/birdcopy/BirdCopy-Web-Server/blob/master/API/group/ga_get_member_gplist_from_tn.md)**
