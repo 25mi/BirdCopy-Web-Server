@@ -1,0 +1,86 @@
+﻿
+评论上传及交互:
+
+19:手机端同服务器交互评论功能相关:
+
+  I.获取评论列表:[Cache-Control设置:max-age=3天]
+       a.手机端请求url: 
+	http://[ServerNetAddress]/tu_cm_get_ct_list_from_tn.action
+	相关参数:
+	   必须参数:
+		ct_id: id(课程id)
+		ct_type: 评论内容类型,具体取值见注解;
+	   可选参数:
+		perPageCount:每页记录数,大于0的正整数，默认15;
+		page:第几页,大于0的正整数，默认1;
+
+		ins_time_start:上传评论起始时间,标准格式:yyyy-mm-dd hh:mi:ss;
+		ins_time_stop:上传评论终止时间,标准格式:yyyy-mm-dd hh:mi:ss;
+
+		sortindex:排序,具体取值见注解;
+
+		tuser_key:终端用户key;
+		app_id:上传评论时所在App id;
+
+        注:sortindex:（返回评论列表的排序）,多重排序可组合,中间以,分隔;
+		为空时	->	表示按 上传评论时间 升序;
+		其它取值:ins_time desc	 ->表示按 上传评论时间 降序;
+
+       b.服务器端响应(Content-Type:application/json;charset=utf-8):
+	{"rc":"操作结果","rm":"反馈信息","allRecordCount":全部记录数,"allPageCount":全部页数,"currentPage":当前页数,"perPageCount":每页记录数,
+		"rs":[
+		{"contentID":"id","contentType":"类型",
+		"userID":"终端用户key","nickName":"用户昵称","portraitURL":"用户头像的url",
+		"commentContent":"评论内容","commentTime":"上传评论时间"}
+		,...]
+	}
+	rc取值:	
+	1:已成功
+	0:未成功,rm返回具体出错信息,rm参数之后的其它参数可能不会返回.
+
+
+
+  V.手机端将终端用户评论相关数据上传到服务器:	 
+       a.手机端请求url:
+	http://[ServerNetAddress]/tu_add_ct_from_tn.action
+	相关参数:
+	   必须参数:
+		tuser_key:终端用户key;[注:tuser_key不存在时会自动注册;]
+		ct_id: id(课程id)
+		ct_type: 评论内容类型,具体取值见注解;
+	   可选参数:
+		name:用户昵称;
+		portrait_url:用户头像url;
+		content:评论内容;
+
+		app_id:上传评论时所在App id,为空时默认为系统App id;
+
+        注:上传评论时间(ins_time)以服务器为准;
+
+       b.服务器端响应(Content-Type:application/json;charset=utf-8):
+	{"rc":"操作结果","rm":"反馈信息"}
+	rc取值:	
+	1:已成功
+	0:未成功
+	注:rc=0时,rm返回具体出错信息.
+
+  
+  注:	ct_type:评论内容类型,具体取值:
+	web_pg
+	video
+	audio
+	docu
+	event
+	live
+
+
+
+
+
+
+
+
+
+
+
+

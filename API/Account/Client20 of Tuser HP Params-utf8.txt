@@ -1,0 +1,41 @@
+﻿
+手机端上传及交互:
+
+20:终端用户信息管理相关:
+
+  I.获取终端用户注册状态相关:[见 Client8 of User HP Params-utf8 III]
+
+
+  II.替换终端用户key:	 
+       a.手机端请求url:
+	http://[ServerNetAddress]/tu_rk_replace_from_tn.action
+	相关参数:
+	   必须参数:
+		tuser_key_s:终端用户key(老);
+		tuser_key_d:终端用户key(新);[注:tuser_key_d会自动注册;]
+
+	   可选参数:
+		app_id:终端App id,默认值:系统App id;
+
+       b.服务器端响应(Content-Type:application/json;charset=utf-8):
+	{"rc":"操作结果","rm":"反馈信息"}
+	rc取值:	
+	1:已成功
+	0:未成功
+	注:rc=0时,rm返回具体出错信息.
+
+  
+	注:终端用户key(新)自动注册,并复制终端用户key(老)的注册信息及用户基础信息;
+	   只将当前app内的终端用户key(老)替换为终端用户key(新);
+	   当终端用户key(老)在所有app均无消费数据时,删除此key(老)的注册信息及用户基础信息;
+
+
+
+
+
+
+
+
+
+
+
