@@ -3,7 +3,26 @@
 
 20:终端用户信息管理相关:
 
-  I.获取终端用户注册状态相关:[见 Client8 of User HP Params-utf8 III]
+  I.获取终端用户相关状态:
+       a.手机端请求url:
+	http://[ServerNetAddress]/tu_ua_get_status_from_tn.action
+	相关参数:
+	   必须参数:
+		tuser_key:终端用户key;
+
+	   可选参数:
+		app_id:终端App id,默认值:系统App id;
+
+       b.服务器端响应(Content-Type:application/json;charset=utf-8):
+	{"rc":"操作结果","rm":"反馈信息","rs":"状态编码(取值见下)"}
+	rc取值:	
+	1:已成功
+	0:未成功,rm返回具体出错信息,rm参数之后的其它参数可能不会返回.
+
+	rs取值:
+	1 :当前用户已在平台注册,在当前app内有消费数据;
+	-1:当前用户未在平台注册;
+	-2:当前用户已在平台注册,但在当前app内无消费数据;
 
 
   II.替换终端用户key:	 
@@ -21,8 +40,7 @@
 	{"rc":"操作结果","rm":"反馈信息"}
 	rc取值:	
 	1:已成功
-	0:未成功
-	注:rc=0时,rm返回具体出错信息.
+	0:未成功,rm返回具体出错信息.
 
   
 	注:终端用户key(新)自动注册,并复制终端用户key(老)的注册信息及用户基础信息;
