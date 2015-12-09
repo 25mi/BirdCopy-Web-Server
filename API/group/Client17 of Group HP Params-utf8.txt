@@ -1,0 +1,191 @@
+﻿
+终端上传及交互:
+
+17:手机端同服务器交互群组功能相关:
+
+  I.获取群组列表:[Cache-Control设置:max-age=3天]
+       a.手机端请求url: 
+	http://[ServerNetAddress]/ga_get_gp_list_from_tn.action
+	相关参数:
+	   可选参数:
+		type:想要获取的数据内容,默认取值all,返回群组列表,其它取值rc,返回符合条件的全部记录数;
+		perPageCount:每页记录数,大于0的正整数，默认15;
+		page:第几页,大于0的正整数，默认1;
+		owner_recom:属主推荐,1:已推荐 0:未推荐;
+		sys_recom:系统推荐,1:已推荐 0:未推荐;
+		gp_id:群组id;
+		gp_owner:群组属主;
+		user_id:User ID;
+		sys_time_start:录入起始时间,标准格式:yyyy-mm-dd hh:mi:ss;
+		sys_time_stop:录入终止时间,标准格式:yyyy-mm-dd hh:mi:ss;
+		upd_time_start:最近更新起始时间,标准格式:yyyy-mm-dd hh:mi:ss;
+		upd_time_stop:最近更新终止时间,标准格式:yyyy-mm-dd hh:mi:ss;
+		sortindex:排序,具体取值见注解;
+
+		tuser_key:终端用户key;
+		app_id:查询时所在App id;
+
+        注:sortindex:（返回群组列表的排序）,多重排序可组合,中间以,分隔;
+		为空时	->	表示按 最近更新时间 降序;
+		其它取值:sys_time desc	 ->为默认值,表示按 录入时间 降序;(升序去掉 desc)
+			 upd_time desc	 ->表示按 更新时间 降序;(升序去掉 desc)
+	      		 gp_name	 ->表示按 群组名称 升序;(降序加 desc)
+
+       b.服务器端响应(Content-Type:application/json;charset=utf-8):
+       .type=all:
+	{"rc":"操作结果","rm":"反馈信息","allRecordCount":全部记录数,"allPageCount":全部页数,"currentPage":当前页数,"perPageCount":每页记录数,
+		"rs":[{
+		"gp_id":"群组id","gp_name":"群组名称","gp_owner":"群组属主(目前=作者)","user_id":"User ID","gp_desc":"群组描述",
+		"logo":"群组logo图片的url","cover":"群组cover图片的url",
+		"is_audit_join":"申请加入群组是否需要审核[1:是 0:否]",
+		"is_rc_gp":"是否已开通融云对应群组[1:是 0:否 null:空]",
+		"is_audit_rcgp":"申请加入融云对应群组是否需要审核[1:是 0:否]",
+		"owner_recom":"属主是否已推荐[1:是 0:否 null:空]",
+		"sys_recom":"系统是否已推荐[1:是 0:否 null:空]",
+		"gp_stat":{"gp_member_sum":群组成员数,"gp_ln_sum":群组课程数(作者暂为群组属主),...},
+		...
+		}]
+	}
+	rc取值:	
+	1:已成功
+	0:未成功,rm返回具体出错信息,rm参数之后的其它参数可能不会返回.
+
+
+       .type=rc:
+	{"rc":"操作结果","rm":"反馈信息","allRecordCount":全部记录数}
+	rc取值:	
+	1:已成功
+	0:未成功,rm返回具体出错信息,rm参数之后的其它参数可能不会返回.
+
+
+  II.获取群组相关信息:[Cache-Control设置:max-age=3天]
+       a.手机端请求url:
+	http://[ServerNetAddress]/ga_get_gp_info_from_tn.action
+	相关参数:
+	   必须参数:
+		gp_id:群组 id
+	   可选参数:
+		app_id:查询时所在App id;
+
+       b.服务器端响应(Content-Type:application/json;charset=utf-8):
+	{"rc":"操作结果","rm":"反馈信息","rs":{同上}}
+	rc取值:	
+	1:已成功
+	0:未成功,rm返回具体出错信息,rm参数之后的其它参数可能不会返回.
+
+
+
+
+
+
+  V.手机端将终端用户申请加入群组的相关数据上传到服务器:	 
+       a.手机端请求url:
+	http://[ServerNetAddress]/ga_apply_member_from_tn.action
+	相关参数:
+	   必须参数:
+		tuser_key:终端用户key;[注:tuser_key不存在时会自动注册;]
+		gp_id:要加入的群组id;
+	   可选参数:
+		app_id:申请时所在App id,为空时默认为系统App id;
+		is_ay_rcgp:是否申请聊天功能(融云群组聊天),默认值1(是),其它值0(否);
+
+       b.服务器端响应(Content-Type:application/json;charset=utf-8):
+	{"rc":"操作结果","rm":"反馈信息","info_type":"信息类型","tuser_key":"tuser_key"
+		,"ay_join_time":"加入申请时间","ay_join_status":"加入申请状态","rp_join_desc":"未通过加入申请描述"
+		,"ay_rcgp_time":"聊天申请时间","ay_rcgp_status":"聊天申请状态","rp_rcgp_desc":"未通过聊天申请描述"
+	}
+	rc取值:	
+	1:已成功
+	0:未成功,rm返回具体出错信息,rm参数之后的其它参数可能不会返回.
+
+	注:info_type取值如下:
+		now:及时反馈;
+		ay_join:申请加入群组的审批反馈;(可能是V的反馈)
+		ay_rcgp:申请群组聊天的审批反馈;(可能是VI的反馈)
+		mod_member:服务器端改变成员状态提示;(可能是VII的提示)
+		del_member:服务器端删除成员信息提示;(可能是VIII的提示)
+
+	注:ay_join_status及ay_rcgp_status取值如下:
+		0:正在审批;
+		1:审批通过;
+		4:审批未通过;
+	注:如果系统依赖融云推送审批结果,系统审批后会发送RC:TxtMsg类型系统消息一次,内容同上,也可自行获取审批结果.
+
+
+  VI.手机端将终端用户申请群组聊天的相关数据上传到服务器:	 
+       a.手机端请求url:
+	http://[ServerNetAddress]/ga_apply_rcgp_from_tn.action
+	相关参数:
+	   必须参数:
+		tuser_key:终端用户key;
+		gp_id:已加入的群组id;
+	   可选参数:
+		app_id:申请加入群组时所在App id,为空时默认为系统App id;
+
+       b.服务器端响应(Content-Type:application/json;charset=utf-8):
+	注:返回结果同V的结果一致;
+	注:如果系统依赖融云推送审批结果,系统审批后会发送RC:TxtMsg类型系统消息一次,内容同V的结果一致,也可自行获取审批结果.
+
+
+  VII.服务器端如果改变成员相应状态,如果系统依赖融云推送审批结果,系统会发送RC:TxtMsg类型系统消息一次,内容同V的结果一致.
+	 
+  VIII.服务器端如果从组删除成员,如果系统依赖融云推送审批结果,系统会发送RC:TxtMsg类型系统消息一次,内容同V的结果一致,但info_type之后的内容不会返回.
+
+
+
+  IX.获取群组成员的相关信息:	 
+       a.手机端上传url:
+	http://[ServerNetAddress]/ga_get_member_info_from_tn.action
+	相关参数:
+	   必须参数:
+		tuser_key:终端用户key;[注:tuser_key不存在时会自动注册;]
+		gp_id:要加入或已加入的群组id;
+	   可选参数:
+		type:获取类型,取值如下:
+			默认值=all		->全部信息
+			ay_join_status		->获取此成员加入申请状态;
+			rp_join_desc		->获取此成员未通过加入申请描述;
+			ay_rcgp_status		->获取此成员聊天申请状态;
+			rp_rcgp_desc		->获取此成员未通过聊天申请描述;
+
+		app_id:查询时所在App id,为空时默认为系统App id;
+
+       b.服务器端响应(Content-Type:application/json;charset=utf-8):
+	{"rc":"操作结果","rm":"反馈信息","type":"相应值"}
+	rc取值:	
+	1:已成功
+	0:未成功,rm返回具体出错信息,rm参数之后的其它参数可能不会返回.
+
+	注:当type=all时,返回结果同V的结果一致;
+	注:ay_join_status及ay_rcgp_status取值同上;
+
+  X.获取终端用户所属组列表:[Cache-Control设置:max-age=3天]
+       a.手机端上传url:
+	http://[ServerNetAddress]/ga_get_member_gplist_from_tn.action
+	相关参数:
+	   必须参数:
+		tuser_key:终端用户key;[注:tuser_key不存在时会自动注册;]
+	   可选参数:
+		app_id:查询时所在App id;
+
+       b.服务器端响应(Content-Type:application/json;charset=utf-8):
+	{"rc":"操作结果","rm":"反馈信息","tuser_key":"tuser_key","allRecordCount":全部记录数,"rs":[{
+		"gp_id":"群组-1 id","gp_name":"群组-1 名称"}]
+
+	}
+	rc取值:	
+	1:已成功
+	0:未成功,rm返回具体出错信息,rm参数之后的其它参数可能不会返回.
+
+
+
+
+
+
+
+
+
+
+
+
+
