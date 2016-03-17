@@ -1,0 +1,101 @@
+﻿
+其它交互:
+
+15:产品用户相关:
+
+  I.获取的产品用户信息列表:[Cache-Control设置:max-age=3天]
+       a.请求url: 
+	http://[ServerNetAddress]/pu_get_user_info_from_o.action?参数1=值&参数2=值...
+	必须参数:
+		user_id:User id;
+		user_index:User index;
+		注:以上二个参数必须至少提供一个;
+
+       b.服务器端响应(为文本字符串):
+          返回:用户信息(xml格式)
+	<?xml version='1.0' encoding='utf-8'?>
+	<puser_list isOK=是否成功 rtMsg=返回信息 allRecordCount=全部记录数>
+	 <puser user_index=''>
+	  <user_id>user_id</user_id>
+	  <user_name>用户姓名</user_name>
+	  <user_title>用户title</user_title>
+	  <user_desc>用户描述</user_desc>
+	  <job_title>职位</job_title>
+	  <tel_mobile>手机</tel_mobile>
+	  <tel>固话</tel>
+	  <fax>传真</fax>
+	  <email>邮箱</email>
+	  <www>网址</www>
+	  <work_unit>公司</work_unit>
+	  <hab_addr>所在地区详址</hab_addr>
+	  <post_code>邮政编码</post_code>
+
+	  <contact_tel>联系电话</contact_tel>
+	  <contact_addr>联系地址</contact_addr>
+	  <longitude>经度</longitude>
+	  <latitude>纬度</latitude>
+
+	  <logo_file>用户 Logo url</logo_file>
+	  <img1_file>用户广告或背景 url</img1_file>
+	  <user_tag>用户标签</user_tag>
+	  <default_mp_dn>用户默认主页入口 url</default_mp_dn>
+	 </puser>
+	...
+	</puser_list>
+
+	注:
+	.puser_list -> isOK:是否成功标识.当获取失败时,为值 false,且在rtMsg里返回简要错误信息,而且无puser列表;
+                             当获取成功时,为值 true,且有puser列表.
+
+????????????????????????????????????????????????????????????????????????????????????
+  II.获取产品用户主页相关信息列表:[Cache-Control设置:max-age=3天]
+       a.请求url: 
+	http://[ServerNetAddress]/pu_get_mp_info_from_o.action?参数1=值&参数2=值...
+	必须参数:u
+
+       b.服务器端响应(为文本字符串):
+          返回:用户信息(xml格式)
+	<?xml version='1.0' encoding='utf-8'?>
+	<mp_list isOK=是否成功 rtMsg=返回信息 allRecordCount=全部记录数>
+	 <mp>
+	  <!-- 用户部分 -->
+	  <user_id>user_id</user_id>
+	  <user_name>用户姓名</user_name>
+	  <user_title>用户title</user_title>
+	  <user_desc>用户描述</user_desc>
+	  <job_title>职位</job_title>
+	  <tel_mobile>手机</tel_mobile>
+	  <tel>固话</tel>
+	  <fax>传真</fax>
+	  <email>邮箱</email>
+	  <www>网址</www>
+	  <work_unit>公司</work_unit>
+	  <hab_addr>所在地区详址</hab_addr>
+	  <post_code>邮政编码</post_code>
+
+	  <contact_tel>联系电话</contact_tel>
+	  <contact_addr>联系地址</contact_addr>
+	  <longitude>经度</longitude>
+	  <latitude>纬度</latitude>
+
+	  <logo_file>用户 Logo url</logo_file>
+	  <img1_file>用户广告或背景 url</img1_file>
+	  <user_tag>用户标签</user_tag>
+	  <default_mp_dn>用户默认主页入口 url</default_mp_dn>
+
+	  <!-- 当前主页部分 -->
+	  <mp_title>用户title</mp_title>
+	  <mp_desc>用户描述</mp_desc>
+	  <mp_iurl>当前主页微站入口 url</mp_iurl>
+	 </mp>
+	...
+	</mp_list>
+
+	注:
+	.mp_list -> isOK:是否成功标识.当获取失败时,为值 false,且在rtMsg里返回简要错误信息,而且无mp列表;
+                             当获取成功时,为值 true,且有mp列表.
+
+
+
+
+

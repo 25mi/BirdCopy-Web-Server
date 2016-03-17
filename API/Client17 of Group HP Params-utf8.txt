@@ -43,8 +43,11 @@
 		"is_audit_rcgp":"申请加入融云对应群组是否需要审核[1:是 0:否]",
 		"owner_recom":"属主是否已推荐[1:是 0:否 null:空]",
 		"sys_recom":"系统是否已推荐[1:是 0:否 null:空]",
-		"gp_stat":{"gp_member_sum":群组成员数,"gp_ln_sum":群组课程数(作者为user_id),...},
-		...
+		"gp_stat":{"gp_member_sum":群组成员数,"gp_ln_sum":群组课程数(作者为user_id)},
+		"latest_ln":{"ln_id":"课程md5","ln_price":课程标价金币数,"ln_title":"课程名称"
+			,"res_type":"资源类型","ln_desc":"课程描述","img_file":"海报 url","ln_tag":"标签"
+			,"ln_owner":"课程作者","upd_time":"最后更新时间","sys_time":"录入时间"
+			,"ln_cmt_sum":评论数
 		}]
 	}
 	rc取值:	
@@ -192,9 +195,9 @@
 	注:如果系统依赖融云推送审批结果,系统审批后会发送RC:TxtMsg类型系统消息一次,内容同V的结果一致,也可自行获取审批结果.
 
 
-  VII.服务器端如果改变成员相应状态,如果系统依赖融云推送审批结果,系统会发送RC:TxtMsg类型系统消息一次,内容同V的结果一致.
+  VII.服务器端如果改变成员相应状态,如果系统依赖融云推送审批结果,系统会发送给用户RC:TxtMsg信息[待定:系统会发送RC:TxtMsg类型系统消息一次,内容同V的结果一致].
 	 
-  VIII.服务器端如果从组删除成员,如果系统依赖融云推送审批结果,系统会发送RC:TxtMsg类型系统消息一次,内容同V的结果一致,但info_type之后的内容不会返回.
+  VIII.服务器端如果从组删除成员,如果系统依赖融云推送审批结果,系统会发送给用户RC:TxtMsg信息[待定:系统会发送RC:TxtMsg类型系统消息一次,内容同V的结果一致,但info_type之后的内容不会返回].
 
 
 
@@ -240,14 +243,21 @@
 		app_id:查询时所在App id;
 
        b.服务器端响应(Content-Type:application/json;charset=utf-8):
-	{"rc":"操作结果","rm":"反馈信息","tuser_key":"tuser_key","allRecordCount":全部记录数,"rs":[{
-		"gp_id":"群组-1 id","gp_name":"群组-1 名称"}]
-
+	{"rc":"操作结果","rm":"反馈信息","tuser_key":"tuser_key","allRecordCount":全部记录数,
+		"rs":[{
+		gp_id 到 gp_stat:同 I 里的rs说明,
+		"latest_ln":{"ln_id":"课程md5","ln_price":课程标价金币数,"ln_title":"课程名称"
+			,"res_type":"资源类型","ln_desc":"课程描述","img_file":"海报 url","ln_tag":"标签"
+			,"ln_owner":"课程作者","upd_time":"最后更新时间","sys_time":"录入时间"
+			,"ln_cmt_sum":评论数
+		}]
+			
 	}
 	rc取值:	
 	1:已成功
 	0:未成功,rm返回具体出错信息,rm参数之后的其它参数可能不会返回.
 
+	注:latest_ln,暂时加以上属性;
 
 
 

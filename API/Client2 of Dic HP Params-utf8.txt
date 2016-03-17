@@ -1,0 +1,39 @@
+﻿
+手机端请求及响应:
+
+2:获取相关的单词或列表:
+  I.手机端请求url:  
+       1.获取单词(公共)url:
+	.单 个 单词:http://[ServerNetAddress]/la_get_dic_pub_detail_for_hp.action?wd_id=[bewordid]
+	.一或多个单词:http://[ServerNetAddress]/la_get_dic_pub_list_for_hp.action?wd_id=[bewordid]&wd_lemma=[belemma]&wd_abb=[beabb]
+         注:[...]内的内容可变;
+           获取一或多个单词时:[bewordid][belemma][beabb] 3个参数可以任意组合;
+	                      如果需要分页,可以加参数:perPageCount=[每页记录数]   page=[第几页]
+       2.获取单词(补充)url:
+	.单 个 单词:http://[ServerNetAddress]/la_get_dic_sup_detail_for_hp.action?wd_id=[bewordid]
+	.一或多个单词:http://[ServerNetAddress]/la_get_dic_sup_list_for_hp.action?wd_id=[bewordid]&wd_lemma=[belemma]&wd_abb=[beabb]
+         注:[...]内的内容可变;
+           获取一或多个单词时:[bewordid][belemma][beabb] 3个参数可以任意组合;
+	                      如果需要分页,可以加参数:perPageCount=[每页记录数]    page=[第几页]
+
+
+  II.服务器端响应(为文本字符串):
+     ---单或多个单词--- 
+	<?xml version='1.0' encoding='utf-8'?>
+	<word_list isOK=是否成功 rtMsg=返回信息 allRecordCount=全部单词数 allPageCount=全部页数 currentPage=当前页数 perPageCount=每页记录数>
+	 <word bewordid='单词唯一id'>
+	  <belemma>...</belemma>
+   	  <beabb>...</beabb>
+   	  <bedesc>...</bedesc>
+   	  <bebase>...</bebase>
+   	  <beorder>...</beorder>
+	 </word>
+	...
+	</word_list>
+
+	注:
+	.word_list -> isOK:是否成功标识.当获取失败时,为值 false,且在rtMsg里返回简要错误信息,而且无word列表;
+                           当获取成功时,为值 true,且有word列表(无记录时无word列表).
+	.返回多个单词时,有多个word块;
+
+

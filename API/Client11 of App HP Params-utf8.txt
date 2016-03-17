@@ -1,0 +1,99 @@
+﻿
+
+手机端上传及交互:
+
+11:手机App相关:
+
+  I.获取App相关信息:
+       a.手机端获取相应App的最新版本及相关信息:[Cache-Control设置:max-age=3天]
+	http://[ServerNetAddress]/aa_get_app_info_from_hp.action
+	相关参数:
+	   必须参数:
+		app_id:App id
+		st_id: App终端id
+		注:app_id和ts_id至少提供一个.
+	   可选参数:
+		type:获取类型,取值如下:
+			默认值=max	->获取此App最新版本号(大于0的正整数)及下载url;
+			logo		->获取此Applogo图片的url;
+			img1		->获取此App广告图片的url;
+			page		->获取此App在平台官网的下载首页url;
+			user_id		->获取此App user_id;
+			app_id		->获取此App服务器端id;
+			app_owner	->获取此App属主;
+			domain		->获取此App域;
+			wx_id		->获取此App wx_id;
+			ts_id		->获取此App终端id;
+
+       b.服务器端响应(为文本字符串):
+	已成功:(根据type不同,返回值不同)
+	type=max	->此App最新版本号;下载url
+			  注:中间以;分隔
+	type=img1	->此App广告图片的url
+			  注:如果未录入,返回空
+	type=page	->此App在平台官网的下载首页url
+			  注:如果未有下载首页,返回空
+	type=user_id	->此App user_id
+			  注:如果未有user_id,返回空
+	logo app_id app_owner ts_id类同
+	未成功:
+	-1 :必须参数缺少;
+	-11:当前系统无此App;
+	-12:此App不可用;
+	-21:此App未发布版本;
+	-22:此App已发布版本均不可用;
+	-99:中途出错(系统原因);
+
+
+  II.获取App列表:[Cache-Control设置:max-age=3天]
+       a.手机端请求url: 
+	http://[ServerNetAddress]/aa_get_app_list_from_hp.action
+	相关参数:
+	   可选参数:
+		type:想要获取的数据内容,默认取值all,返回App列表,其它取值rc,返回符合条件的全部记录数;
+		perPageCount:每页记录数,大于0的正整数，默认15;
+		page:第几页,大于0的正整数，默认1;
+		app_id:AppID;
+		st_id:App终端ID;
+		sys_recom:系统推荐,取值1时,返回系统推荐的App,其它非空值时,返回非系统推荐的App;
+		sys_time_start:录入起始时间,标准格式:yyyy-mm-dd hh:mi:ss;
+		sys_time_stop:录入终止时间,标准格式:yyyy-mm-dd hh:mi:ss;
+		upd_time_start:最近更新起始时间,标准格式:yyyy-mm-dd hh:mi:ss;
+		upd_time_stop:最近更新终止时间,标准格式:yyyy-mm-dd hh:mi:ss;
+		sortindex:排序,具体取值见注解;
+
+        注:sortindex:（返回App列表的排序）,多重排序可组合,中间以,分隔;
+		为空时	->	表示按 录入时间 降序;
+		其它取值:sys_time desc	 ->为默认值,表示按 录入时间 降序;(升序去掉 desc)
+			 upd_time desc	 ->表示按 更新时间 降序;(升序去掉 desc)
+	      		 app_name	 ->表示按 中文名称 升序;(降序加 desc)
+
+       b.服务器端响应(Content-Type:application/json;charset=utf-8):
+       .type=all:
+	{"rc":"操作结果","rm":"反馈信息","allRecordCount":全部记录数,"allPageCount":全部页数,"currentPage":当前页数,"perPageCount":每页记录数,
+		"rs":[{
+		"app_id":"AppId","st_id":"App终端id","app_owner":"App属主","app_name":"中文名称","user_id":"User ID","logo_file":"Logo url",
+		"domain":"域","wx_id":"App wx_id","rc_app_key":"融云app key","rc_app_secret":"融云app secret"
+		}]
+	}
+	rc取值:	
+	1:已成功
+	0:未成功,rm返回具体出错信息,rm参数之后的其它参数可能不会返回.
+
+
+       .type=rc:
+	{"rc":"操作结果","rm":"反馈信息","allRecordCount":全部记录数}
+	rc取值:	
+	1:已成功
+	0:未成功,rm返回具体出错信息,rm参数之后的其它参数可能不会返回.
+
+
+  III.手机申请用户app信息url:
+       a.http://[ServerNetAddress]/aa_apply_app_from_hp.screen
+
+
+
+
+
+
+

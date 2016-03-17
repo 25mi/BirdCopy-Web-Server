@@ -1,0 +1,42 @@
+﻿
+手机端请求及响应:[...]内的内容可变;
+
+6:获取可分页的学习计划卡(系统)列表:[Cache-Control设置:max-age=3天]
+  I.手机端请求url:  
+       1.获取列表url:
+	http://[ServerNetAddress]/la_get_plan_list_for_hp.action?perPageCount=[每页记录数]&page=[第几页]
+
+	注意: 应用条件 -> perPageCount=1&sortindex=recd_level desc	可以返回推荐级别最高的一条学习卡信息;
+
+       2.获取课程相关资源url:
+	http://[ServerNetAddress]/la_get_plan_rel_url_for_hp.action?type=[想要获取资源的类型]&getType=[想要获取资源的格式]&pc_id=[学习计划卡唯一id]
+	注:.type的选值----->img:封面; set:内容包; des:描述(字符串); dif:难度分布(字符串); tat:任务数; cot:金币价格; clt:点击次数;
+
+	   .getType的选值----->url:返回url格式;content:返回实际内容(目前针对:内容包);
+             <默认值:url>
+
+
+  II.服务器端响应(为文本字符串):
+     ---单或多个单词--- 
+	<?xml version='1.0' encoding='utf-8'?>
+	<plan_list isOK=是否成功 rtMsg=返回信息 allRecordCount=全部单词数 allPageCount=全部页数 currentPage=当前页数 perPageCount=每页记录数>
+	 <plan id='学习计划卡唯一id'>
+	  <identifier>...</identifier>
+   	  <titleString>...</titleString>
+   	  <description>...</description>
+   	  <imageURL>...</imageURL>
+   	  <setURL>...</setURL>
+   	  <level>...</level>
+   	  <coinCount>...</coinCount>
+   	  <moneyCount>...</moneyCount>
+   	  <taskCount>...</taskCount>
+	 </plan>
+	...
+	</plan_list>
+
+	注:
+	.plan_list -> isOK:是否成功标识.当获取失败时,为值 false,且在rtMsg里返回简要错误信息,而且无plan列表;
+                           当获取成功时,为值 true,且有plan列表(无记录时无plan列表).
+	.id='学习计划卡唯一id' 目前等同 <identifier>苹果官方id</identifier>
+
+

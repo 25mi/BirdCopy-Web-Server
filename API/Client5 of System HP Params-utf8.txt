@@ -1,0 +1,18 @@
+﻿
+手机端获取系统公共资源:
+
+5:手机端获取系统公共资源相关:
+
+  I.获取基本字典语音包(800)的url:[Cache-Control设置:max-age=1年]	 
+       a.手机端请求url: 
+	http://[ServerNetAddress]/la_get_res_url_from_hp.action?type=[请求的资源类型]
+	注:.type的选值----->dic800_mp3:基本字典语音包(800个)压缩文件; 
+			    dic800_define:基本字典数据库文件（base.db）的压缩文件; 
+			    dic800_all:包含mp3文件和db文件的压缩文件; 
+			    dic800_define_n:基本字典(新)数据库文件（base.db）的压缩文件; 
+			    dic800_all_n:包含mp3文件和db文件(新)的压缩文件; 
+
+       b.服务器端响应(为文本字符串):
+	注:无或出错返回空;
+
+

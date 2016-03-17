@@ -1,0 +1,10 @@
+﻿
+手机端上传及交互:
+
+12:手机网站相关:
+
+  I.课程评论网页url:
+       a.http://[ServerNetAddress]/mwc.screen?ln_id=课程id
+
+
+

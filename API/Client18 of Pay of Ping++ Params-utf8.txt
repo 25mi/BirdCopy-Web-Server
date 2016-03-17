@@ -1,0 +1,123 @@
+﻿
+终端上传及交互:
+
+18:手机端同服务器交互Ping++支付功能相关:
+
+  I.获取支付凭据(Charge):
+       a.手机端请求url: 
+	http://[ServerNetAddress]/pa_get_charge_from_tn.action
+	相关参数:
+	   必须参数:
+		tuser_key:终端用户key;
+		app_id:支付时所在App id;
+
+		以下Ping++参数:
+		amount: 订单总金额, 单位为对应币种的最小货币单位(integer and > 0 )，例如：人民币为分（如订单总金额为 1 元，此处请填 100）;
+		subject:商品的标题，该参数最长为 32 个 Unicode 字符，银联限制在 32 个字节;
+		body:   商品的描述信息，该参数最长为 128 个 Unicode 字符，yeepay_wap 对于该参数长度限制为 100 个 Unicode 字符;
+
+	   可选参数:
+		以下Ping++参数:
+		channel:支付渠道,默认值=alipay (支付宝手机 App 支付),其它暂不支持;
+		currency:支付货币代码,默认值=cny (人民币),其它暂不支持;
+
+
+       b.服务器端响应(Content-Type:application/json;charset=utf-8):
+	{"rc":"操作结果","rm":"反馈信息","order_no":"订单号","Charge":{Ping++ Charge 对象(见Ping++相关文档)}}
+	rc取值:	
+	1:已成功
+	0:未成功,rm返回具体出错信息,rm参数之后的其它参数可能不会返回.
+
+
+
+  II.查询支付凭据(Charge)信息:
+       a.手机端请求url:
+	http://[ServerNetAddress]/pa_que_charge_from_tn.action
+	相关参数:
+	   必须参数:
+		tuser_key:终端用户key;
+		order_no:订单号;
+		ppp_chg_id:Ping++ charge 对象的 id;
+		[order_no和ppp_chg_id]至少提供一个
+
+	   可选参数:
+		type:获取类型,取值如下:
+			默认值=paid	->boolean,是否已付款;
+			transaction_no	->支付渠道返回的交易流水号;
+			time_paid	->订单支付完成时间;
+			time_expire	->订单失效时间;
+			failure_code	->订单的错误码;
+			failure_msg	->订单的错误消息的描述;
+			ppp_charge	->Ping++ Charge 对象;
+			ppp_event	->Ping++ Event 对象;
+
+		app_id:查询时所在App id;
+
+       b.服务器端响应(Content-Type:application/json;charset=utf-8):
+	{"rc":"操作结果","rm":"反馈信息","获取类型":"相应值"}
+	rc取值:
+	1:已成功 0:未成功 注:rc=0时,rm返回具体出错信息,rm参数之后的其它参数可能不会返回.
+
+
+
+  V.壹收款专用-获取订单号:
+       a.手机端请求url: 
+	http://[ServerNetAddress]/pa_get_on_from_tn.action
+	相关参数:
+	   必须参数:
+		tuser_key:终端用户key;
+
+		以下Ping++参数:
+		app_id:所在App id;
+
+       b.服务器端响应(Content-Type:application/json;charset=utf-8):
+	{"rc":"操作结果","rm":"反馈信息","order_no":"订单号"}
+	rc取值:	
+	1:已成功
+	0:未成功,rm返回具体出错信息,rm参数之后的其它参数可能不会返回.
+
+
+
+  VI.壹收款专用-获取支付凭据(Charge):
+       a.手机端请求url: (post请求:body内容为一个 JSON 对象)
+	http://[ServerNetAddress]/pa_get_o_charge_from_tn.action
+	数据格式:
+		{
+			"amount":订单总金额(int),
+			"order_no":订单号(String),
+			"channel":支付渠道(String),
+			"extras":自定义参数(JsonObject)
+		}
+		自定义参数:
+	   		必须:
+			tuser_key:终端用户key;
+			app_id:支付时所在App id;
+
+			可选:
+			subject:商品的标题，该参数最长为 32 个 Unicode 字符，银联限制在 32 个字节;
+			body:   商品的描述信息，该参数最长为 128 个 Unicode 字符，yeepay_wap 对于该参数长度限制为 100 个 Unicode 字符;
+
+       b.服务器端响应(Content-Type:application/json;charset=utf-8):
+	{Ping++ Charge 对象(见Ping++相关文档)}
+	注:中途出错时,返回格式{"rc":"0","rm":"出错信息"}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

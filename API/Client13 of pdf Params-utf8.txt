@@ -1,0 +1,41 @@
+﻿
+Pdf转换:
+
+13:Pdf转换相关:
+
+  I.Pdf 转成 html:
+       a.公用文件夹:
+	1.pdf源文件所在文件夹:
+	  /usr/bes_all/2_busi/web/bes/public/pdf/src/
+
+	2.目标htm文件所在文件夹:
+	  /usr/bes_all/2_busi/web/bes/public/pdf/des_html/
+
+
+       b.文件名相关:
+	1.pdf源文件名格式:
+	  h_s_*.pdf
+	  | |
+	  | |
+	  | s或m: s表示转为一个html文件; m表示转为多个html文件;
+	  h: 表示转为html文件
+
+	2.目标html文件名格式:
+	  1.转为一个html文件: 1.html
+	  2.转为多个html文件: 1.html 2.html 3.html ... 99.html ...
+
+	3.目标html文件返回格式:(2选1)
+	  1.压缩文件:
+	    压缩文件名 = pdf源文件名.zip	解压后为: 1.html 2.html 3.html ... 99.html ...
+	    注:pdf源文件名不含.pdf,仅为h_s_*
+
+	  2.文件夹:
+	    文件夹名 = pdf源文件名		文件夹里包含: 1.html 2.html 3.html ... 99.html ...
+	    注:pdf源文件名不含.pdf,仅为h_s_*
+
+
+       c.其它:
+	1.pdf源文件成功转成html文件后:删除;
+	  
+
+

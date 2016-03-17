@@ -1,0 +1,84 @@
+﻿
+手机端请求及响应:[...]内的内容可变,
+
+1:获取用户文章:
+  I.手机端请求url:  
+       1.获取单一网页课程对应的用户文章xml:
+	http://[ServerNetAddress]/ua_get_article_detail_for_hp.action?ua_id=[文章唯一id]
+
+       3.获取课程相关资源url:[Cache-Control设置:max-age=1年]
+	http://[ServerNetAddress]/ua_get_article_rel_for_hp.action?type=[想要获取资源的类型]&getType=[想要获取资源的格式]&ua_id=[文章唯一id]
+	注:.type的选值----->title:标题; cap:字幕; img:封面; vio:视频; des:描述(字符串); dur:时长(字符串); curl_type:contentURL类型(字符串);
+             <默认值:cap>   ln_price:课程标价(金币数);ln_url:课程网页展示的url;ln_isbn:课程ISBN;res_url_3:课程附加资源url;
+			    lnview_matrix_str:课程展示网页上的二维码所包含字符串(数据格式见ClientI of DataFormat HP Params-utf8中I.-3);
+
+
+			    ******原字典相关*******************************************************************************************
+			    pro:语音补丁zip;dic:字典补丁xml; med:补丁集合zip(含语音补丁mp3和字典补丁xml);
+			    ******新字典相关*******************************************************************************************
+			    pro_n:语音补丁zip;dic_n:字典补丁xml; med_n:补丁集合zip(含语音补丁mp3和字典补丁xml);
+			    ***********************************************************************************************************
+			    说明:i.语音补丁zip文件:无目录一层压缩,解压后为相关单词的mp3文件,mp3文件命名->[belemma].mp3;
+			         ii.字典补丁xml文件:
+					原字典: xml文件命名->固定为:dic_mend.xml,格式见   Client2 of Dic HP Params-utf8.txt
+					新字典: xml文件命名->固定为:dic_mend_n.xml,格式见 Client7 of Dic_n HP Params-utf8.txt
+
+			         iii.补丁集合zip文件:无目录一层压缩,解压后为相关单词的mp3文件及字典补丁xml文件,命名同上;
+
+	   .getType的选值----->url:返回url格式;content:返回实际内容(目前针对:字幕,字典补丁);
+             <默认值:url>
+
+	    情况I ->有ln_id的md5值,直接通过md5请求.
+            	    .md5_value随md5_type不同而不同,md5_type的选值----->vioh:视频头;url1:web的url;url2:mp4或m3u8或magnet或mp3的url;isbn:ISBN;  <默认值:>
+	    情况II->无ln_id的md5值,可以通过相关资源的url请求,此url可以是web或第三方资源,如mp4,m3u8,magnet.
+            	    .req_url:传输前要进行URI编码
+                    .其它可以传送的参数:user_id=[用户id]
+					ln_title=[资源title]
+					ln_desc=[资源描述]
+           
+
+  II.服务器端响应(为文本字符串):
+     ---主课程列表--- 
+	<?xml version='1.0' encoding='utf-8'?>
+	<lesson_list isOK=是否成功 rtMsg=返回信息 allRecordCount=全部记录数 allPageCount=全部页数 currentPage=当前页数 perPageCount=每页记录数>
+	 <lesson id='课程唯一id' res_type='课程资源类型' index='0'>
+	  <title>课程名称</title>
+	  <ln_price>课程标价(金币数)</ln_price>
+	  <description>课程描述</description>
+	  <coverImageURL>海报 url</coverImageURL>
+	  <contentURL type='contentURL类型'>课程 url</contentURL>
+	  <subtitleURL>字幕 url</coverImageURL>
+	  <duration>课程时长</duration>
+	  <startTime>开始时间</subtitle>
+	  <proURL>补丁集合 url</proURL>
+	  <mindURL>新补丁集合 url</mindURL>
+	  <diffLevel>难度等级</diffLevel>
+	  <ln_tag>标签</ln_tag>
+	  <ln_url>课程网页展示的url</ln_url>
+	  <ln_isbn>课程ISBN</ln_isbn>
+	  <ln_relative>课程附加资源url</ln_relative>
+	  <ln_id>课程索引id</ln_id>
+	  <ln_owner>课程作者</ln_owner>
+	 </lesson>
+	...
+	</lesson_list>
+
+	注:
+	.lesson_list -> isOK:是否成功标识.当获取失败时,为值 false,且在rtMsg里返回简要错误信息,而且无lesson列表;
+                             当获取成功时,为值 true,且有lesson列表.
+
+	.lesson -> index:当主课程列表时,为0;当子课程列表时,为当前段数索引(从1开始);
+	.contentURL的type:	mp4:可直接获取的资源;
+				m3u8:所有m3u8;(含系统m3u8;第三方m3u8;)
+				magnet:磁力链;
+
+	.res_type:课程资源类型,取值如下：
+				video:视频类型;
+				audio:音频类型;
+				web_pg:网页类型;
+				pdf:pdf类型;
+
+	.ln_url -> 其中的数据格式定义见:ClientI of DataFormat HP Params-utf8
+
+	.ln_relative:课程附加资源url 目前只应用于res_type=pdf时,且仅为zip类型文件;
+ 

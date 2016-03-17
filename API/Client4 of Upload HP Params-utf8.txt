@@ -1,0 +1,58 @@
+﻿
+手机端上传及交互:
+
+4:手机端上传课程url相关:
+
+  I.上传第三方mp4或m3u8链接:
+       a.手机端上传url: 
+	http://[ServerNetAddress]/la_access_url_from_hp.action?ln_id=[课程id]&type=[url类型]&url=[需要上传的url]
+	注:.type的选值----->mp4:mp4;	m3u8_o:第三方m3u8; 
+           .url:get方式提交前要进行URI编码,否则用post方式提交.
+
+           .其它可以传送的参数:	user_key=[用户id]
+
+       b.服务器端响应(为文本字符串):
+	10:已更新;	
+	20:未更新,参数错误;
+	21:未更新,此ln_id对应的课程已不存在或被修改;
+	22:未更新,contentUrl已存在;
+	99:中途出错;
+
+  II.反馈相关 url 失效:	 
+       a.手机端上传url: 
+	http://[ServerNetAddress]/la_echo_from_hp.action?type=[反馈类型]&ln_id=[课程id]&url=[当时失效的url]
+	注:.type的选值----->err_url1:失效的webURL	err_url2:失效的contentURL(含:直接获取,第三方m3u8,磁力链); 	err_m3u8:失效的系统m3u8; 
+           .url:get方式提交前要进行URI编码,否则用post方式提交.
+		当type=err_m3u8时,可不必提交
+
+           .其它可以传送的参数:	user_key=[用户id]
+				err_msg=[简要出错信息,注意get方式提交前相关字符要进行URI编码]
+
+       b.服务器端响应(为文本字符串):
+	10:接纳反馈,等待处理;	
+	11:接纳反馈,已处理;	
+	20:未接纳反馈,参数错误;
+	21:未接纳反馈,此ln_id对应的课程已不存在或被修改;
+	22:未接纳反馈,content url或type已更改;
+	23:未接纳反馈,数据处于保护期内;
+	99:中途出错;
+
+
+  III.上传系统m3u8文件:	 
+       a.手机端上传url: 
+	http://[ServerNetAddress]/la_access_file_from_hp.action
+	注:表单的action=la_access_file_from_hp.action
+	   表单里的参数		
+		ln_id=[课程id]
+		user_key=[用户id]
+		type=[上传文件类型]	选值----->m3u8_i:系统m3u8;
+		f=[指向本地需要上传的文件]
+
+       b.服务器端响应(为文本字符串):
+	10:已更新;
+	20:未更新,参数错误;
+	21:未更新,此ln_id对应的课程已不存在或被修改;
+	23:未更新,系统m3u8已存在;
+	99:中途出错;
+
+

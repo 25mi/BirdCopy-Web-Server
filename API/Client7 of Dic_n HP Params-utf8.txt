@@ -1,0 +1,43 @@
+﻿
+手机端请求及响应:
+
+7:获取相关的词条或列表:
+  I.获取单词相关词条:[Cache-Control设置:max-age=1年]
+       a.手机端请求url:
+	.一或多个单词:http://[ServerNetAddress]/la_get_dic_list_for_hp.action?word=[beword]&m_prop=[beindex]
+          注:[...]内的内容可变;
+             [beword][beindex] 2个参数可以任意组合;
+	     为提高查询效率,暂不支持[beword]为空的情况;
+	     如果需要分页,可以加参数:perPageCount=[每页记录数]   page=[第几页]
+	     默认状态下,[beword]忽略大小写,如区分大小写,加参数:isIgnoreCase=no
+
+
+       b.服务器端响应(为文本字符串):
+	<?xml version='1.0' encoding='utf-8'?>
+	<word_list isOK=是否成功 rtMsg=返回信息 allRecordCount=全部词条数 allPageCount=全部页数 currentPage=当前页数 perPageCount=每页记录数>
+	 <word>
+	  <beword>...</beword>
+   	  <beindex>...</beindex>
+   	  <beentry>...</beentry>
+   	  <betag>...</betag>
+	 </word>
+	...
+	</word_list>
+
+	注:
+	.word_list -> isOK:是否成功标识.当获取失败时,为值 false,且在rtMsg里返回简要错误信息,而且无word列表;
+                           当获取成功时,为值 true,且有word列表(无记录时无word列表);
+			   当无[beword]可以匹配时,系统自动记录之.
+
+
+  II.获取word列表url:[Cache-Control设置:max-age=1年]	 
+       a.手机端请求url: 
+	http://[ServerNetAddress]/la_get_word_string_for_hp.action?word=[?]
+        注:比如：word=abc  比如获取abc 开头的所有单词;为空不返回;
+	   如果需要分页,可以加参数:perPageCount=[每页记录数]   page=[第几页]
+
+       b.服务器端响应(为文本字符串):
+        单词1;单词2...
+
+	注:中间以;分隔;
+	   出错返回空;
