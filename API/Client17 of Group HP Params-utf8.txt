@@ -117,6 +117,9 @@
 		"owner_recom":"属主是否已推荐[1:是 0:否 null:空]",
 		"sys_recom":"系统是否已推荐[1:是 0:否 null:空]",
 
+		"start_time":"生效时间;[格式:2015-05-09 01:01:01;]",
+		"end_time":"结束时间;[格式:2015-05-09 01:01:01;]",
+
 		"token":"融云token",
 		"name":"融云用户名称",
 		"portrait_url":"融云头像文件url"
@@ -216,7 +219,8 @@
 			ay_rcgp_status		->获取此成员聊天申请状态;
 			rp_rcgp_desc		->获取此成员未通过聊天申请描述;
 
-		app_id:查询时所在App id,为空时默认为系统App id;
+			start_time		->获取此成员生效时间;[格式:2015-05-09 01:01:01;]
+			end_time		->获取此成员结束时间;[格式:2015-05-09 01:01:01;]
 
        b.服务器端响应(Content-Type:application/json;charset=utf-8):
 	{"rc":"操作结果","rm":"反馈信息","type":"相应值"}
