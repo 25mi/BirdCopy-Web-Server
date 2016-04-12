@@ -21,6 +21,14 @@ I.手机端与服务器端需要交互的二维码数据格式相关:
 	注:手机端扫描后可将其中的 当前课程id 取出使用;
 	   否则跳转至当前课程网页;
 
+  4.二维码4	显示在终端绑定页(用于将tuser_key和服务器端user_id建立映射关系)里的二维码:[当前版本:1-20160403]
+       a.二维码里的数据格式: 
+	服务器端url?当前场景标识=值
+	其中:当前场景标识 bes_matrix_tuserurms
+	示例:http://e.birdcopy.com/?matrix_tuserurms=随机字符串
+	注:手机端扫描后将其中的 随机字符串 通过API返回,API定义见:Client20 of Tuser HP Params-utf8 里 III，
+	   否则跳转至http://e.birdcopy.com;
+
 
 
 II.手机端与服务器端需要交互的自定义协议格式相关:
@@ -42,7 +50,7 @@ III.手机端与服务器端需要交互的特殊数据格式相关:
 	其中:当前场景标识由 bes_3_data_lnviewlnid 改为 ffa_ld
 	示例:http://www.birdcopy.com:9999/lalnv.action?ln_id=当前课程序列号&ffa_ld=当前课程id
 	注:其中的 当前课程id 可用;
-	   已弃用bes_3_data_lnviewlnid:3为系统id,english=3 , vip=1, v=0;
+	   已弃用bes_3_data_lnviewlnid:3为系统id,english=3 , vip=1, d=0, it=5, fd=6;
 
 
   2.特殊数据格式2 手机微站显示课程主页url 里的特殊数据格式:
