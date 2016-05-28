@@ -21,6 +21,7 @@
 			user_id		->获取此App user_id;
 			app_id		->获取此App服务器端id;
 			app_owner	->获取此App属主;
+			gp_owner	->获取此App可应用的群组属主;
 			domain		->获取此App域;
 			wx_id		->获取此App wx_id;
 			ts_id		->获取此App终端id;
@@ -72,7 +73,7 @@
        .type=all:
 	{"rc":"操作结果","rm":"反馈信息","allRecordCount":全部记录数,"allPageCount":全部页数,"currentPage":当前页数,"perPageCount":每页记录数,
 		"rs":[{
-		"app_id":"AppId","st_id":"App终端id","app_owner":"App属主","app_name":"中文名称","user_id":"User ID","logo_file":"Logo url",
+		"app_id":"AppId","st_id":"App终端id","app_owner":"App属主","gp_owner":"App群组属主","app_name":"中文名称","user_id":"User ID","logo_file":"Logo url",
 		"domain":"域","wx_id":"App wx_id","rc_app_key":"融云app key","rc_app_secret":"融云app secret"
 		}]
 	}

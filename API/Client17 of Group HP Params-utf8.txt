@@ -22,6 +22,9 @@
 		upd_time_stop:最近更新终止时间,标准格式:yyyy-mm-dd hh:mi:ss;
 		sortindex:排序,具体取值见注解;
 
+		.20160505增******************************************************************
+		app_id:App id,根据app_id,获取此App对应gp_owner,以此gp_owner作为群组属主进行查询;
+
 		tuser_key:终端用户key;
 		app_id:查询时所在App id;
 
